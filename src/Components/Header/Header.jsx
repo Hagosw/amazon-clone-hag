@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Header.module.css";
+import { Link } from "react-router-dom";
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
@@ -11,12 +12,12 @@ const Header = () => {
         <div className={classes.header__container}>
           {/* Logo Section */}
           <div className={classes.logo__container}>
-            <a href="#">
+          <Link to="/">
               <img
                 src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
                 alt="Amazon logo"
               />
-            </a>
+            </Link>
 
             {/* Delivery Location */}
             <div className={classes.delivery}>
@@ -43,30 +44,29 @@ const Header = () => {
 
           {/* Order Section */}
           <div className={classes.order__container}>
-            <a href="#" className={classes.language}>
+            <Link to="" className={classes.language}>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png"
-                alt="US flag"
-              />
-              <select name="language" id="language">
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/1920px-Flag_of_the_United_States.svg.png" alt="US flag"/>
+
+              <select name="" id="">
                 <option value="EN">EN</option>
               </select>
-            </a>
+            </Link>
 
-            <a href="#">
+            <Link to="">
               <p>Sign In</p>
               <span>Account & Lists</span>
-            </a>
+            </Link>
 
-            <a href="#">
+            <Link to="/Orders">
               <p>Returns</p>
               <span>& Orders</span>
-            </a>
+            </Link>
 
-            <a href="#" className={classes.cart}>
+            <Link to="/Cart" className={classes.cart}>
               <BiCart size={35} />
               <span>0</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
