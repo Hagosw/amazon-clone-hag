@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "dependencies": {
+    
+    "dependencies": {
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
     "@fortawesome/react-fontawesome": "^0.2.2",
@@ -25,6 +26,7 @@
     "react-router-dom": "^7.0.1",
     "react-spinners": "^0.14.1"
   },
+  
   "devDependencies": {
     "@eslint/js": "^9.13.0",
     "@types/react": "^18.3.12",

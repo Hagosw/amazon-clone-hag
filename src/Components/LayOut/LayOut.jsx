@@ -4,14 +4,13 @@ import Header from "../Header/Header";
 
 function LayOut({ children }) {
   return (
-    <div>
-      {/* Render the Header component at the top of the layout */}
-      <Header />
 
-      {/* Render any child components passed to the LayOut component */}
+    <div>
+      <Header />
       {children}
     </div>
+
   );
 }
 
-export default LayOut; // Exporting the LayOut component for use in other parts of the application
+export default LayOut; 

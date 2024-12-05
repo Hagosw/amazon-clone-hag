@@ -21,15 +21,24 @@ function Product() {
         });  
     }, []);  
   
-    if (loading) return <div>Loading...</div>;  
+    // if (loading) return <div>Loading...</div>;  
   
     return (  
-      <section className={classes.product__container}>  
-        {products.map((singleProduct) => (  
-          <ProductCard Product={singleProduct} key={singleProduct.id} />  
-        ))}  
-      </section>  
-    );  
+      <>
+    {
+      isLoading?(<Loader/>): (<section className={classes.product__container}>  
+     
+        {
+        products?.map((singleProduct) => {  
+          return <ProductCard Product={singleProduct} key={singleProduct.id} />  
+         })
+      }  
+
+      </section>  )
+    }
+</>
+    
+    ) 
   }
 
   export default Product

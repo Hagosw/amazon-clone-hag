@@ -12,7 +12,8 @@ function ProductCard({ Product }) {
     const { image, title, id, rating, price } = Product;  
     return (  
         <div className={classes.productCard__container}>  
-            <Link to={`product/${id}`}> {/* Update this link accordingly */}  
+
+            <Link to={`product/${id}`}>  
                 <img src={image} alt={title || "Product Image"} />  
             </Link>  
             <div>  
