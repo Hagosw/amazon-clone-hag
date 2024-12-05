@@ -2,6 +2,7 @@ import React from 'react'
 import Rating from "@mui/material/Rating";
 import classes from "./Product.module.css";
 import CurrencyFormat from '../CurrencyFormat/CurrencyFormat';
+import { Link } from 'react-router-dom';
 // import { Link } from "react-router-dom";
 // import { DataContext } from "../DataProvider/DataProvider";
 
@@ -11,9 +12,9 @@ function ProductCard({ Product }) {
     const { image, title, id, rating, price } = Product;  
     return (  
         <div className={classes.productCard__container}>  
-            <a href={`product/${id}`}> {/* Update this link accordingly */}  
+            <Link to={`product/${id}`}> {/* Update this link accordingly */}  
                 <img src={image} alt={title || "Product Image"} />  
-            </a>  
+            </Link>  
             <div>  
                 <h3>{title}</h3>  
                 <div className={classes.productCard__rating}>  

@@ -1,5 +1,5 @@
 import React from "react";
-import CarouselsEffect from "../../components/Carousel/Carousel"; 
+import CarouselsEffect from "../../Components/Carousel/Carousel"; 
 import Category from "../../components/Category/Category"; 
 import Product from "../../components/Product/Product"; 
 import classes from "./Landing.module.css";
