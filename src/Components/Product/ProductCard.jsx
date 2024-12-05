@@ -3,24 +3,24 @@ import Rating from "@mui/material/Rating";
 import classes from "./Product.module.css";
 import CurrencyFormat from '../CurrencyFormat/CurrencyFormat';
 import { Link } from 'react-router-dom';
-// import { Link } from "react-router-dom";
-// import { DataContext } from "../DataProvider/DataProvider";
+import { DataContext } from "../DataProvider/DataProvider";
 
 
 
-function ProductCard({ Product }) {  
-    const { image, title, id, rating, price } = Product;  
+function ProductCard({ Product, flex, renderDesc }) {  
+    const { image, title, id, rating, price, description } = Product;  
     return (  
-        <div className={classes.productCard__container}>  
+        <div className={`${classes.productCard__container} ${flex?classes.product_flexed : ''}`}>  
 
             <Link to={`product/${id}`}>  
-                <img src={image} alt={title || "Product Image"} />  
+                <img src={image} alt="" className={classes.productCard__container}/>  
             </Link>  
             <div>  
                 <h3>{title}</h3>  
+                {renderDesc && <div>{description}</div>}
                 <div className={classes.productCard__rating}>  
-                    <Rating value={rating.rate} precision={0.1} />  
-                    <small>{rating.count}</small>  
+                    <Rating value={rating?.rate} precision={0.1} />  
+                    <small>{rating?.count}</small>  
                 </div>  
                 <div>  
                     <CurrencyFormat amount={price} />  

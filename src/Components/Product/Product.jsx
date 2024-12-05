@@ -24,15 +24,19 @@ function Product() {
     // if (loading) return <div>Loading...</div>;  
   
     return (  
-      <>
+    <>
     {
-      isLoading?(<Loader/>): (<section className={classes.product__container}>  
+      isLoading ? (
+      <Loader/>
+    ): (
+      
+      <section className={classes.product__container}>  
      
-        {
-        products?.map((singleProduct) => {  
-          return <ProductCard Product={singleProduct} key={singleProduct.id} />  
-         })
-      }  
+        {products?.map((singleProduct) => {  
+          return (
+          <ProductCard Product={singleProduct} key={singleProduct.id} />  
+        );
+      })}  
 
       </section>  )
     }
