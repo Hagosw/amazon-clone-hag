@@ -1,48 +1,51 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import ProductCard from './ProductCard'
+import React, { useEffect, useState } from "react"; 
+import axios from "axios"; 
+import ProductCard from "./ProductCard"; 
 import classes from "./Product.module.css"; 
+import Loader from "../Loader/Loader"; 
 
 
+function Product() {
+  
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-function Product() {  
-    const [products, setProducts] = useState([]);  
-    const [loading, setLoading] = useState(true);  
-  
-    useEffect(() => {  
-      axios.get('https://fakestoreapi.com/products')  
-        .then((res) => {  
-          setProducts(res.data);  
-          setLoading(false);  
-        })  
-        .catch((err) => {  
-          console.log(err);  
-          setLoading(false);  
-        });  
-    }, []);  
-  
-    // if (loading) return <div>Loading...</div>;  
-  
-    return (  
+    useEffect(() => {
+    setIsLoading(true); 
+    axios
+      .get("https://fakestoreapi.com/products") 
+      .then((res) => {
+        setProducts(res.data); 
+        setIsLoading(false); 
+      })
+      .catch((err) => {
+        console.log("error: " + err); 
+        setIsLoading(false); 
+      });
+  }, [setProducts]); 
+
+  return (
     <>
-    {
-      isLoading ? (
-      <Loader/>
-    ): (
-      
-      <section className={classes.product__container}>  
-     
-        {products?.map((singleProduct) => {  
-          return (
-          <ProductCard Product={singleProduct} key={singleProduct.id} />  
-        );
-      })}  
+      {/* Conditional rendering: show Loader component while data is being loaded */}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <section className={classes.product__container}>
+          {/* Map through the products array and render a ProductCard for each product */}
+          {products?.map((singleProduct) => {
+            return (
+              <ProductCard
+                renderAdd={true} 
+                key={singleProduct.id} 
+                product={singleProduct} 
+                sliceDesc={true} 
+              />
+            );
+          })}
+        </section>
+      )}
+    </>
+  );
+}
 
-      </section>  )
-    }
-</>
-    
-    ) 
-  }
-
-  export default Product
+export default Product; 

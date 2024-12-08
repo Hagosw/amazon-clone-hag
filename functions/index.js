@@ -1,11 +1,10 @@
 const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
-
 const express = require("express")
 const cors = require('cors');
 const { setGlobalOptions } = require("firebase-functions");
 const dotenv = require('dotenv').config()
-// dotenv.config()
+
 
 const stripe = require('stripe')(process.env.STRIPE_KEY)
 

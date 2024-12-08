@@ -12,8 +12,8 @@ function Loader() {
         height: "50vh", 
       }}
     >
-     
-      <FadeLoader color="#36d7b7" />
+      {/* Rendering the FadeLoader spinner with custom color */}
+      <FadeLoader color="#ff9900" />
     </div>
   );
 }

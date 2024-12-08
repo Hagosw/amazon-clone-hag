@@ -2,37 +2,37 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel"; 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import classes from "./Carousel.module.css"; 
-import { img } from "./img/data"; 
+import {imgs}  from "./imgs/data"; 
 import { IoIosArrowBack } from "react-icons/io"; 
 import { IoIosArrowForward } from "react-icons/io"; 
-
 
 function CarouselsEffect() {
   return (
     <>
+      {/* Carousel Component */}
       <Carousel
-        autoPlay={true} // Enables continuous looping through images
+        autoPlay={true} 
         infiniteLoop={true} 
-        showIndicators={false} // Hides the small indicator dots under the carousel
+        showIndicators={false} 
         showThumbs={false} 
         showStatus={false} 
         renderArrowPrev={(onClickHandler, hasPrev, label) =>
-          hasPrev && ( // Only render the previous arrow if there is a previous item
+          hasPrev && ( 
             <button
-              onClick={onClickHandler} // Click event handler for the previous arrow
-              title={label} // Sets the label for accessibility
-              className={classes.carousel__prev} // Applies styles from the CSS module
+              onClick={onClickHandler}
+              title={label} 
+              className={classes.carousel__prev} 
             >
               <IoIosArrowBack size={60} /> {/* Custom left arrow icon */}
             </button>
           )
         }
         renderArrowNext={(onClickHandler, hasNext, label) =>
-          hasNext && ( // Only render the next arrow if there is a next item
+          hasNext && ( 
             <button
-              onClick={onClickHandler} // Click event handler for the next arrow
-              title={label} // Sets the label for accessibility
-              className={classes.carousel__next} // Applies styles from the CSS module
+              onClick={onClickHandler} 
+              title={label} 
+              className={classes.carousel__next} 
             >
               <IoIosArrowForward size={60} /> {/* Custom right arrow icon */}
             </button>
@@ -40,8 +40,8 @@ function CarouselsEffect() {
         }
       >
         {/* Loop through images and render them inside the carousel */}
-        {img.map((imageItemsLinks, i) => {
-          return <img key={i} src={imageItemsLinks} alt={`carousel-${i}`} />; // Renders each image in the carousel
+        {imgs.map((imageItemsLinks, i) => {
+          return <img key={i} src={imageItemsLinks} alt={`carousel-${i}`} />; 
         })}
       </Carousel>
 

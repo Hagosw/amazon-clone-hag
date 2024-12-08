@@ -1,19 +1,21 @@
 import React from "react";
-import { categoryInfos } from "./categoryFullInfos"; 
+import { categoryInfo } from "./categoryFullInfos"; 
 import CategoryCard from "./CategoryCard"; 
-import classes from "./category.module.css";
+import classes from "./Category.module.css"; 
 
 
-function Category() {  
-  return (  
-    <section className={classes.category__container}>  
-      {  
-        categoryInfos.map((infos, index) => {  
-          return <CategoryCard key={index} data={infos} />  
-        }) // Closing the map function here  
-      }  
-    </section>  
-  );  
-}  
+function Category() {
+  return (
+    <>
+      {/* Container for the category section */}
+      <section className={classes.category__container}>
+        {/* Looping over categoryInfo array and rendering CategoryCard for each item */}
+        {categoryInfo.map((infos, index) => {
+          return <CategoryCard key={index} data={infos} />; // Passing each category's data to CategoryCard
+        })}
+      </section>
+    </>
+  );
+}
 
-export default Category;  
+export default Category; 

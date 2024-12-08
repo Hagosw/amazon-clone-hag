@@ -1,41 +1,50 @@
-import React, { useEffect, useState } from 'react'
-import classes from "./ProductDetail.module.css"
-import { useParams } from 'react-router-dom'
-import LayOut from '../../Components/LayOut/LayOut'
-import axios from 'axios'
-import ProductCard from "../../Components/Product/ProductCard";
-import { productUrl } from '../../Api/endPoints'
-import Loader from '../../Components/Loader/Loader'
+import React, { useEffect, useState } from "react";
+import { productUrl } from "../../Api/endPoints"; 
+import LayOut from "../../components/LayOut/LayOut"; 
+import { useParams } from "react-router-dom"; 
+import ProductCard from "../../components/Product/ProductCard"; 
+import Loader from "../../components/Loader/Loader"; 
+import axios from "axios"; 
 
 
-function ProductDetail () {
+function ProductDetail() {
+  const [product, setProduct] = useState({}); 
+  const { productId } = useParams(); 
+  const [isLoading, setIsLoading] = useState(false); 
 
-  const [product, setProduct] = useState({})
-  const [isLoading, setIsLoading]=useState(false)
-  const {productId} = useParams()
-
-  useEffect(()=>{
-  setIsLoading(true)
-  axios.get(`${productUrl}/products/${productId}`) 
-  .then((res) => {
-  setProduct(res.data);
-  setIsLoading(false)
-}).catch((err) => {
-  console.log(err)
-  setIsLoading(false)
-})
-}, [])
-
+ 
+  useEffect(() => {
+    setIsLoading(true); 
+    axios
+      .get(`${productUrl}/products/${productId}`) 
+      .then((res) => {
+        setProduct(res.data); 
+        setIsLoading(false); 
+      })
+      .catch((err) => {
+        console.log(err); t
+        setIsLoading(false); 
+      });
+  }, [productId]); 
   return (
     <LayOut>
-      {isLoading? (<Loader/>):(<ProductCard
-      product={product}
-      flex = {true}
-      renderDesc={true}
-      />)}
+      {/* If loading is true, show the Loader component, otherwise show the product details */}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        // Display the product using ProductCard component once the data is available
+        <ProductCard
+          key={product.id}
+          titleUp={true} 
+          product={product} 
+          flex={true} 
+          add_description={true} 
+          add_button={true} 
+          renderAdd={true} 
+        />
+      )}
     </LayOut>
-    
-  )
+  );
 }
 
-export default ProductDetail
+export default ProductDetail; 
