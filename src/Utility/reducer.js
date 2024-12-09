@@ -1,9 +1,9 @@
 import { Type } from "./action.type";
 
-// Load basket from local storage when the application starts
+
 const savedBasket = JSON.parse(localStorage.getItem('basket')) || [];
 
-// Initial state with the saved basket from local storage and a default null user
+
 export const initialState = {
   basket: savedBasket,
   user: null
@@ -14,7 +14,7 @@ export const reducer = (state, action) => {
   switch (action.type) {
     case Type.ADD_TO_BASKET:
       {
-        // Find if the item is already in the basket
+        // check if the item is already in the basket
         const existingItem = state.basket.find(
           (item) => item.id === action.item.id
         );
@@ -50,7 +50,6 @@ export const reducer = (state, action) => {
 
     case Type.REMOVE_FROM_BASKET:
       {
-        // Find the index of the item in the basket
         const index = state.basket.findIndex((item) => item.id === action.id);
         let newBasket = [...state.basket];
 
@@ -83,11 +82,11 @@ export const reducer = (state, action) => {
       }
 
     case Type.EMPTY_BASKET:
-      // Empty the basket and clear it from local storage
+      
       localStorage.setItem('basket', JSON.stringify([]));
       return {
         ...state,
-        basket: [] // Set the basket to an empty array
+        basket: [] 
       }
 
     default:

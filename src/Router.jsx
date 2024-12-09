@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 import Landing from "./Pages/Landing/Landing"; 
-import SignIn from "./Pages/Auth/Auth"; 
+import Auth from "./Pages/Auth/Auth"; 
 import Payment from "./Pages/Payment/Payment"; 
 import Orders from "./Pages/Orders/Orders"; 
 import Cart from "./Pages/Cart/Cart"; 
@@ -24,7 +24,7 @@ function Routing() {
         <Route path="/" element={<Landing />} />
 
         {/* Public route for authentication (Sign In) */}
-        <Route path="/auth" element={<SignIn />} />
+        <Route path="/auth" element={<Auth />} />
 
         {/* Protected route for payments, users must be logged in */}
         <Route

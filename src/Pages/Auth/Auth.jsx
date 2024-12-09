@@ -31,6 +31,7 @@ function Auth() {
     e.preventDefault(); 
 
     if (e.target.name === "signIn") {
+      
       // Handle Sign In
       setLoading({ ...loading, signIn: true }); 
       signInWithEmailAndPassword(auth, email, password)
